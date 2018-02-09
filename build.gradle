@@ -1,0 +1,13 @@
+plugins {
+	id 'ear'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	deploy project(path: ':war', configuration: 'archives')
+
+	earlib 'org.flywaydb:flyway-core:5.0.7'
+}
