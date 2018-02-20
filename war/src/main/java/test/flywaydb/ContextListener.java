@@ -19,7 +19,9 @@ public class ContextListener implements ServletContextListener {
 			logger.info("TCCL: " + Thread.currentThread().getContextClassLoader());
 			logger.info(getClass().getName() + " ClassLoader: " + this.getClass().getClassLoader());
 			try {
-				System.err.println("org.flywaydb.core.api.logging.LogFactory ClassLoader: " + Class.forName("org.flywaydb.core.api.logging.LogFactory").getClassLoader());
+				logger.info("org.flywaydb.core.api.logging.LogFactory ClassLoader: {}", Class.forName("org.flywaydb.core.api.logging.LogFactory").getClassLoader());
+				Class<?> clazz = Thread.currentThread().getContextClassLoader().loadClass("org.flywaydb.core.internal.util.logging.slf4j.Slf4jLogCreator");
+				logger.info("Requested load of Slf4jLogCreator with TCCL, it loaded with :" + clazz.getClassLoader());
 			} catch (ClassNotFoundException e) {
 				logger.error("Can't load class org.flywaydb.core.api.logging.LogFactory", e);
 			}

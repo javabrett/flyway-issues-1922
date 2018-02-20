@@ -11,3 +11,7 @@ dependencies {
 
 	earlib 'org.flywaydb:flyway-core:5.0.7'
 }
+
+ear {
+	archiveName 'flyway-issues-1922.ear'
+}

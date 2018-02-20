@@ -22,15 +22,15 @@ public class DeployTest {
 		glassfishProperties.setPort("https-listener", 8181);
 
 		final GlassFish glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);
+
 		try {
 			glassfish.start();
 
 			final Deployer deployer = glassfish.getDeployer();
-			deployer.deploy(new File("/Users/bsrandal/git/flywaydb-ear-test/build/libs/flywaydb-ear-test.ear"));
+			deployer.deploy(new File("/Users/bsrandal/git/flyway-issues-1922//build/libs/flyway-issues-1922.ear"));
 
 			final Collection<String> deployedApplications = glassfish.getDeployer().getDeployedApplications();
-			assertEquals(deployedApplications, Arrays.asList("flywaydb-ear-test"));
-
+			assertEquals(deployedApplications, Arrays.asList("flyway-issues-1922"));
 		} finally {
 			glassfish.stop();
 		}
